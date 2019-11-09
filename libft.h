@@ -1,6 +1,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include <stdlib.h>
 
 typedef struct		s_list
 {
@@ -39,6 +40,7 @@ int					ft_toupper(int c);
 int					ft_tolower(int c);
 
 char				*ft_stralloc(size_t size);
+char				*ft_strrev(char *s);
 
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
