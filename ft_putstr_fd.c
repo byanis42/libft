@@ -2,11 +2,11 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
-
-	if (!s)
-    return (NULL);
-    i = 0;
-    while (s[i])
-		ft_putchar_fd(s[i++], fd);
+	if (!s || !fd)
+		return ;
+	while (*s)
+	{
+		ft_putchar_fd(*s, fd);
+		s++;
+	}
 }

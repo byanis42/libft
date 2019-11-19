@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int nb_len(int n)
+static int nb_len(int n)
 {
 	int i;
 
@@ -13,7 +13,7 @@ int nb_len(int n)
 	return (n);
 }
 
-char *convert_num(int n, int signe, char *dest)
+static char *convert_num(int n, int signe, char *dest)
 {
 	int i;
 

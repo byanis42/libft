@@ -4,6 +4,8 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	unsigned int	nb;
 
+	if (!fd)
+		return ;
 	if (n < 0)
 	{
 		nb = -n;
