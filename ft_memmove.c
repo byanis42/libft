@@ -1,21 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanboudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/19 19:12:01 by yanboudr          #+#    #+#             */
-/*   Updated: 2019/11/21 16:28:14 by yanboudr         ###   ########.fr       */
+/*   Created: 2019/11/05 13:49:07 by yanboudr          #+#    #+#             */
+/*   Updated: 2019/11/21 16:28:02 by yanboudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
+#include <string.h>
 
-void	ft_putchar_fd(char c, int fd)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (!fd)
-		return ;
-	write(fd, &c, 1);
+	unsigned char			*cpy_src;
+	unsigned char			*cpy_dst;
+	size_t					i;
+
+	if (src == dst)
+		return (dst);
+	cpy_src = (unsigned char *)src;
+	cpy_dst = (unsigned char *)dst;
+	if (src < dst)
+	{
+		i = len;
+		while (i-- > 0)
+			cpy_dst[i] = cpy_src[i];
+	}
+	else
+	{
+		i = 0;
+		while (i < len)
+		{
+			cpy_dst[i] = cpy_src[i];
+			i++;
+		}
+	}
+	return (dst);
 }

@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanboudr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/21 15:55:57 by yanboudr          #+#    #+#             */
+/*   Updated: 2019/11/21 16:29:50 by yanboudr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 #include <stdlib.h>
 
-int		ft_isspace(char c, char tocheck)
+static int		ft_isspace(char c, char tocheck)
 {
-return (c == tocheck);
+	return (c == tocheck);
 }
 
-int		count_words(char const *str, char c)
+static int		count_words(char const *str, char c)
 {
 	int count;
 
@@ -24,7 +37,7 @@ int		count_words(char const *str, char c)
 	return (count);
 }
 
-char	*malloc_word(char const *str, char c)
+static char		*malloc_word(char const *str, char c)
 {
 	char	*word;
 	int		i;
@@ -44,11 +57,13 @@ char	*malloc_word(char const *str, char c)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char			**ft_split(char const *s, char c)
 {
 	char	**arr;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	if (!(arr = malloc(sizeof(char *) * (count_words(s, c) + 1))))
 		return (NULL);
 	i = 0;

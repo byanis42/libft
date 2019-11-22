@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yanboudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/21 15:53:55 by yanboudr          #+#    #+#             */
-/*   Updated: 2019/11/21 16:20:09 by yanboudr         ###   ########.fr       */
+/*   Created: 2019/11/21 16:01:37 by yanboudr          #+#    #+#             */
+/*   Updated: 2019/11/21 16:01:41 by yanboudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n)
+static int	ft_found(const char str, const char *c)
 {
-	unsigned char		*p1;
-	unsigned char		*p2;
-	size_t				i;
+	int i;
 
-	if (!s1 && !s2 && !n)
-		return (0);
 	i = 0;
-	p1 = (unsigned char *)s1;
-	p2 = (unsigned char *)s2;
-	while (n--)
+	while (c[i] != '\0')
 	{
-		if (p1[i] != p2[i])
-			return (p1[i] - p2[i]);
+		if (c[i] == str)
+			return (1);
 		i++;
 	}
 	return (0);
+}
+
+char		*ft_strtrim(const char *s1, const char *set)
+{
+	int len;
+
+	if (!s1 || !set)
+		return (NULL);
+	while (s1 && ft_found(*s1, set))
+		s1++;
+	len = ft_strlen(s1) - 1;
+	while (len > 0 && ft_found(s1[len], set))
+		len--;
+	if (s1 == '\0')
+		return (ft_calloc(1, sizeof(char)));
+	return (ft_substr(s1, 0, len + 1));
 }

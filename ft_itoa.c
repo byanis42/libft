@@ -1,73 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanboudr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/21 15:50:47 by yanboudr          #+#    #+#             */
+/*   Updated: 2019/11/22 17:01:02 by yanboudr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int nb_len(int n)
+static int		nb_len(int nb)
 {
-	int i;
+	int count;
 
-	i = 0;
-	while (n)
+	count = 0;
+	while (nb)
 	{
-		i++;
-		n = n / 10;
+		nb = nb / 10;
+		count++;
 	}
-	return (n);
+	return (count);
 }
 
-static char *convert_num(int n, int signe, char *dest)
+char			*ft_itoa(int n)
 {
-	int i;
+	int		i;
+	int		signe;
+	char	*dest;
 
 	i = 0;
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (!(dest = malloc(sizeof(char) * nb_len(n) + (n < 0 ? 2 : 1))))
+		return (NULL);
+	signe = (n < 0 ? 1 : 0);
+	n = n * (n < 0 ? -1 : 1);
 	while (n)
 	{
-		dest[i] = n % 10 + 48;
+		dest[i++] = n % 10 + 48;
 		n = n / 10;
-		i++;
 	}
 	if (signe == 1)
-	{
-		dest[i] = '-';
-		i++;
-	}
+		dest[i++] = '-';
 	dest[i] = '\0';
 	ft_strrev(dest);
 	return (dest);
-}
-
-char *ft_itoa(int n)
-{
-	char *dest;
-	int signe;
-
-	signe = 0;
-	if (!(dest = malloc(sizeof(char) * nb_len(n) + n >= 0 ? 1 : 2)))
-		return (NULL);
-	if (n == -2147483648)
-	{
-		dest = "-2147483648";
-		return (dest);
-	}
-	if (n == 0)
-	{
-		dest = "0";
-		return (dest);
-	}
-	if (n < 0)
-	{
-		signe = 1;
-		n = -n;
-	}
-	convert_num(n, signe, dest);
-	return (dest);
-}
-
-#include <stdio.h>
-
-int main()
-{
-	printf("%s\n", ft_itoa(0));
-	printf("%s\n", ft_itoa(-2147483648));
-	printf("%s\n", ft_itoa(12356));
-	printf("%s\n", ft_itoa(42));
-	return (0);
 }

@@ -1,52 +1,52 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yanboudr <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/21 19:31:16 by yanboudr          #+#    #+#             */
+/*   Updated: 2019/11/22 16:43:46 by yanboudr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static int	get_start(char const *s)
+static int		check(const char c, const char *str)
 {
 	int i;
 
 	i = 0;
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
+	while (str[i])
 	{
-		i++;
-	}
-	return (i);
-}
-
-static int get_end(char const *s)
-{
-	int	i;
-
-	i = ft_strlen(s) - 1;
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-	{
-		i--;
-	}
-	i++;
-	return (i);
-}
-
-char *ft_strtrim(char const *s)
-{
-	int		len;
-	char	*str_trimmed;
-
-	if (s)
-	{
-		len = (get_end(s) - get_start(s));
-		if (len <= 0)
-		{
-			str_trimmed = ft_stralloc(1);
-			return (str_trimmed);
-		}
+		if (str[i] != c)
+			i++;
 		else
-		{
-			str_trimmed = ft_stralloc(len);
-		}
-		if (str_trimmed)
-		{
-			str_trimmed = ft_substr(s, get_start(s), len);
-			return (str_trimmed);
-		}
+			return (1);
 	}
-	return (NULL);
+	return (0);
+}
+
+char			*ft_strtrim(char const *str, char const *set)
+{
+	int		i;
+	int		j;
+	char	*s;
+
+	if (!str || !set)
+		return (0);
+	i = 0;
+	j = ft_strlen(str) - 1;
+	while (check(str[i], set) == 1)
+		i++;
+	if (i == (j + 1))
+		return (ft_calloc(1, sizeof(char)));
+	while (check(str[j], set) == 1)
+	{
+		if (j == 0)
+			return (NULL);
+		j--;
+	}
+	s = ft_substr(str, i, j - i + 1);
+	return (s);
 }
