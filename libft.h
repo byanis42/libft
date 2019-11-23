@@ -6,7 +6,7 @@
 /*   By: yanboudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 16:02:37 by yanboudr          #+#    #+#             */
-/*   Updated: 2019/11/21 16:15:43 by yanboudr         ###   ########.fr       */
+/*   Updated: 2019/11/23 18:18:27 by yanboudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void				*ft_memchr(const void *destination,
 int					ft_memcmp(const void *pointer1, const void *pointer2,
 						size_t size);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
-void				*ft_memmove(void *dst, const void *src, size_t len);
+void				*ft_memmove(void *dst, const void *src, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putendl_fd(char *s, int fd);

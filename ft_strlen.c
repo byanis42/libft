@@ -6,7 +6,7 @@
 /*   By: yanboudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 15:59:38 by yanboudr          #+#    #+#             */
-/*   Updated: 2019/11/21 16:28:38 by yanboudr         ###   ########.fr       */
+/*   Updated: 2019/11/23 18:21:28 by yanboudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t		ft_strlen(const char *s)
 	size_t size;
 
 	size = 0;
-	while (s && s[size])
+	while (s[size])
 		size++;
 	return (size);
 }
