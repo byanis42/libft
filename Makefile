@@ -1,7 +1,5 @@
 NAME = libft.a
 
-BONUS_NAME = libft_bonus.a
-
 SRCS = ft_atoi.c \
        ft_isalpha.c \
        ft_bzero.c \
@@ -35,21 +33,17 @@ SRCS = ft_atoi.c \
        ft_strtrim.c \
        ft_strmapi.c \
        ft_strnstr.c \
-	   ft_strcat.c \
-	   ft_strcpy.c \
-	   ft_strrev.c \
-	   ft_memmove.c \
+		ft_memmove.c \
 
 BONUS_SRCS	=	ft_lstadd_back.c \
-				ft_lstadd_front.c \
-				ft_lstdelone.c \
-				ft_lstiter.c \
-				ft_lstclear.c \
-				ft_lstlast.c \
-				ft_lstnew.c \
-				ft_lstsize.c \
-				ft_lstmap.c \
-
+			ft_lstadd_front.c \
+			ft_lstdelone.c \
+			ft_lstiter.c \
+			ft_lstclear.c \
+			ft_lstlast.c \
+			ft_lstnew.c \
+			ft_lstsize.c \
+			ft_lstmap.c \
 
 FLAGS = -Wall -Wextra -Werror -g3
 

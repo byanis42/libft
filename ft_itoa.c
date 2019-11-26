@@ -6,11 +6,31 @@
 /*   By: yanboudr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 15:50:47 by yanboudr          #+#    #+#             */
-/*   Updated: 2019/11/22 17:01:02 by yanboudr         ###   ########.fr       */
+/*   Updated: 2019/11/26 16:32:07 by yanboudr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char		*ft_strrev(char *str)
+{
+	int		i;
+	int		j;
+	char	tmp;
+
+	i = 0;
+	j = 0;
+	j = ft_strlen(str) - 1;
+	while (i < j)
+	{
+		tmp = str[i];
+		str[i] = str[j];
+		str[j] = tmp;
+		i++;
+		j--;
+	}
+	return (str);
+}
 
 static int		nb_len(int nb)
 {
